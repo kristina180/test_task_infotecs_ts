@@ -1,0 +1,35 @@
+.pages {
+  width: 100%;
+  max-width: 1400px;
+  display: flex;
+  flex-direction: row;
+  margin: 10px auto;
+  justify-content: center;
+  column-gap: 10px;
+}
+
+.button,
+.buttonSelect {
+  width: 20px;
+  height: 30px;
+  font-size: 16px;
+  border: 1px solid #6a6a6a;
+  border-radius: 2px;
+}
+
+.buttonSelect {
+  background-color: #007bff;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .pages {
+    margin-top: 6px;
+  }
+  .button,
+  .buttonSelect {
+    width: 14px;
+    height: 24px;
+    font-size: 12px;
+  }
+}

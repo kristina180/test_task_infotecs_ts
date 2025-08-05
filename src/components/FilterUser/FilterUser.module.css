@@ -1,0 +1,91 @@
+.filters {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  max-width: 1400px;
+  margin: 10px auto;
+  box-sizing: border-box;
+}
+
+.filters input[name="name"] {
+  grid-column: span 4;
+}
+
+.filters select {
+  grid-column: span 2;
+}
+
+.buttonSubmit {
+  background-color: #007bff;
+}
+
+.buttonClear {
+  background-color: #6c757d;
+}
+
+.buttonSubmit,
+.buttonClear {
+  color: white;
+  grid-column: span 3;
+  height: 32px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.buttonSubmit:hover {
+  background-color: #0056b3;
+}
+
+.buttonClear:hover {
+  background-color: #5a6268;
+}
+
+.filters input,
+.filters select {
+  height: 32px;
+  padding: 0 4px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .filters {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4px;
+    padding: 4px;
+  }
+
+  .filters input[name="name"] {
+    grid-column: span 2;
+  }
+  .filters select,
+  .filters input,
+  .filters button {
+    font-size: 12px;
+    height: 24px;
+  }
+
+  .filters select[name="gender"],
+  .filters select[name="phone_code"],
+  .buttonSubmit {
+    grid-column: 1/2;
+    min-width: 0;
+  }
+
+  .filters select[name="age"],
+  .filters select[name="city"],
+  .buttonClear {
+    grid-column: 2/3;
+    min-width: 0;
+  }
+}
