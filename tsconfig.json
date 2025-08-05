@@ -22,6 +22,17 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "src/app/not-found.jsx",
+    "src/app/layout.jsx",
+    "src/app/page.jsx",
+    "src/store/store-wrapper.jsx",
+    "src/store/root-store.jsx",
+    "src/store/root-store-context.js"
+  ],
   "exclude": ["node_modules"]
 }
