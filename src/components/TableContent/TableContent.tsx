@@ -19,7 +19,7 @@ const TableContent = observer(() => {
   const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
   const [selectedUser, setSelectedUser] = useState<IUser | null>(null);
   const {
-    userStore: { users, filterUsers, showedUsers, getSortUsers, getUsers },
+    userStore: { isLoading, filterUsers, showedUsers, getSortUsers, getUsers },
   } = useStores();
 
   const tableRef = useRef<HTMLTableElement | null>(null);
@@ -225,7 +225,9 @@ const TableContent = observer(() => {
         </tbody>
       </table>
       {showedUsers.length === 0 && (
-        <div className={styles.noUsers}>No users found</div>
+        <div className={styles.noUsers}>
+          {isLoading ? "Loading..." : "No users found"}
+        </div>
       )}
 
       {isOpenModal && selectedUser && (
