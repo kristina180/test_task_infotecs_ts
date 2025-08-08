@@ -1,50 +1,57 @@
 "use client";
 
-import { observer } from "mobx-react-lite";
 import { useEffect, useState } from "react";
 import { useStores } from "../../store/root-store-context";
-import styles from "./FilterUser.module.css";
 
-const initialState = {
+import { observer } from "mobx-react-lite";
+
+import { IFilters } from "@/utils/types";
+
+import styles from "./FilterUser.module.scss";
+
+const initialState: IFilters = {
   name: "",
   age: "not_selected",
   gender: "not_selected",
   city: "not_selected",
   phone_code: "not_selected",
 };
+
 const FilterUser = observer(() => {
-  const [values, setValue] = useState(initialState);
+  const [values, setValue] = useState<IFilters>(initialState);
 
   const {
-    userStore: { users, filterUsers, getUsers, getFilterUsers, clearFilters },
+    userStore: { users, getUsers, getFilterUsers, clearFilters },
   } = useStores();
-  const arr_phoneCode =
+  const arr_phoneCode: string[] =
     [
       ...new Set(
-        users.map((user) => user.phone.slice(0, user.phone.indexOf(" ")))
+        users.map((user) => user.phone?.slice(0, user.phone.indexOf(" ")))
       ),
     ].sort() || [];
-  const arr_city =
+  const arr_city: string[] =
     [...new Set(users.map((user) => user.address?.city))].sort() || [];
 
-  function handleChangeValue({ target: { value, name } }) {
+  function handleChangeValue({
+    target: { value, name },
+  }: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) {
     setValue({ ...values, [name]: value });
   }
 
-  function handleSubmit(e) {
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (
-      !Object.keys(initialState).every(
-        (key) => values[key] === initialState[key]
-      )
-    ) {
-      getFilterUsers(values);
-    }
+
+    getFilterUsers(values);
   }
   function handleClick() {
     setValue(initialState);
     getFilterUsers(initialState);
-    // clearFilters();
+  }
+
+  function handleKeyDown(event: React.KeyboardEvent<HTMLFormElement>) {
+    if (event.key == "Enter") {
+      event.preventDefault();
+    }
   }
 
   useEffect(() => {
@@ -52,7 +59,11 @@ const FilterUser = observer(() => {
   }, []);
 
   return (
-    <form className={styles.filters} onSubmit={handleSubmit}>
+    <form
+      className={styles.filters}
+      onSubmit={handleSubmit}
+      onKeyDown={handleKeyDown}
+    >
       <input
         type="text"
         id="name"

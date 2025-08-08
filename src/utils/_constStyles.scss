@@ -1,0 +1,28 @@
+$blue_color: rgb(0, 12, 248);
+$font_size_web: 16px;
+$font_size_mob: 12px;
+
+@mixin left-part-filters {
+  grid-column: 1/2;
+  min-width: 0;
+}
+
+@mixin right-part-filters {
+  grid-column: 2/3;
+  min-width: 0;
+}
+
+@mixin button_style($bg_color, $hover_color) {
+  color: white;
+  grid-column: span 3;
+  height: 32px;
+  font-size: $font_size_web;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  background-color: $bg_color;
+  &:hover {
+    background-color: $hover_color;
+  }
+}

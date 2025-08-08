@@ -1,30 +1,32 @@
 "use client";
-import { useEffect, useState, useRef, use } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useStores } from "../../store/root-store-context";
 
 import { observer } from "mobx-react-lite";
 
+import { ISort, TSortWay, IUser, TOption } from "@/utils/types";
+
 import { MoveUp, MoveDown } from "lucide-react";
-import styles from "./TableContent.module.css";
 import { user_photo } from "@/utils/constants";
+import styles from "./TableContent.module.scss";
 
 const TableContent = observer(() => {
-  const [sortBy, setSortBy] = useState({
+  const [sortBy, setSortBy] = useState<ISort>({
     sortWay: "without",
     option: "without",
   });
 
-  const [isOpenModal, setIsOpenModal] = useState(false);
-  const [selectedUser, setSelectedUser] = useState(null);
+  const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
+  const [selectedUser, setSelectedUser] = useState<IUser | null>(null);
   const {
-    userStore: { filterUsers, showedUsers, getSortUsers, getUsers },
+    userStore: { users, filterUsers, showedUsers, getSortUsers, getUsers },
   } = useStores();
 
-  const tableRef = useRef(null);
+  const tableRef = useRef<HTMLTableElement | null>(null);
 
-  function handleChange(sort, option) {
-    if (option == sortBy.option) {
-      if (sortBy.sortWay == "without" || sortBy.sortWay != sort) {
+  function handleChange(sort: TSortWay, option: TOption) {
+    if (option === sortBy.option) {
+      if (sortBy.sortWay === "without" || sortBy.sortWay !== sort) {
         setSortBy({ ...sortBy, sortWay: sort });
         getSortUsers(sort, option);
       } else {
@@ -37,7 +39,7 @@ const TableContent = observer(() => {
     }
   }
 
-  function handleClick(user) {
+  function handleClick(user: IUser) {
     setIsOpenModal(true);
     setSelectedUser(user);
   }
@@ -49,7 +51,7 @@ const TableContent = observer(() => {
     });
   }, [filterUsers]);
 
-  function returnIcon(option) {
+  function returnIcon(option: TOption) {
     return (
       <>
         <MoveUp
@@ -89,17 +91,21 @@ const TableContent = observer(() => {
       return;
     }
 
-    const tableThElem = tableRef.current.querySelectorAll("th");
+    const cleanFun: (() => void)[] = [];
+
+    const tableThElem: NodeListOf<HTMLTableCellElement> =
+      tableRef.current.querySelectorAll("th");
     tableThElem.forEach((elem) => {
-      const resizeHandleElem = elem.querySelector(`.${styles.resizeHandle}`);
+      const resizeHandleElem: HTMLElement | null =
+        elem.querySelector<HTMLElement>(`.${styles.resizeHandle}`);
       if (!resizeHandleElem) {
         return;
       }
 
-      let x_start;
-      let x_start_width;
+      let x_start: number;
+      let x_start_width: number;
 
-      function onMouseDown(event) {
+      function onMouseDown(event: MouseEvent) {
         x_start = event.clientX;
         x_start_width = elem.offsetWidth;
 
@@ -112,7 +118,7 @@ const TableContent = observer(() => {
         document.removeEventListener("mouseup", onMouseUp);
       }
 
-      function onMouseMove(event) {
+      function onMouseMove(event: MouseEvent) {
         let new_width = Math.max(50, x_start_width + (event.clientX - x_start));
 
         elem.style.width = `${new_width}px`;
@@ -120,8 +126,12 @@ const TableContent = observer(() => {
 
       resizeHandleElem.addEventListener("mousedown", onMouseDown);
 
+      cleanFun.push(() =>
+        resizeHandleElem.removeEventListener("mousedown", onMouseDown)
+      );
+
       return () => {
-        resizeHandleElem.removeEventListener("mousedown", onMouseDown);
+        cleanFun.forEach((fn) => fn());
       };
     });
   }, [showedUsers]);
@@ -214,11 +224,11 @@ const TableContent = observer(() => {
             ))}
         </tbody>
       </table>
-      {showedUsers.length == 0 && (
+      {showedUsers.length === 0 && (
         <div className={styles.noUsers}>No users found</div>
       )}
 
-      {isOpenModal && (
+      {isOpenModal && selectedUser && (
         <div
           className={styles.modalWrapper}
           onClick={() => setIsOpenModal(false)}
@@ -231,26 +241,26 @@ const TableContent = observer(() => {
             <div className={styles.userInfo}>
               <div className={styles.avatar}>
                 <img
-                  src={selectedUser.avatar ? selectedUser.avatar : user_photo}
+                  src={selectedUser.image ? selectedUser.image : user_photo}
                   width={100}
                   height={100}
                 />
               </div>
               <div className={styles.content}>
                 <p>
-                  <strong>Name:</strong> {selectedUser.lastName}{" "}
+                  <strong>Name:</strong> {selectedUser.lastName}
                   {selectedUser.firstName} {selectedUser.maidenName}
                 </p>
                 <p>
                   <strong>Age:</strong> {selectedUser.age}
                 </p>
                 <p>
-                  <strong>Address:</strong>{" "}
+                  <strong>Address:</strong>
                   {[
-                    selectedUser.address.country,
-                    selectedUser.address.state,
-                    selectedUser.address.city,
-                    selectedUser.address.address,
+                    selectedUser.address?.country,
+                    selectedUser.address?.state,
+                    selectedUser.address?.city,
+                    selectedUser.address?.address,
                   ].join(", ")}
                 </p>
                 <p>

@@ -1,3 +1,5 @@
+@use "../../utils/constStyles" as *;
+
 .pages {
   width: 100%;
   max-width: 1400px;
@@ -12,13 +14,14 @@
 .buttonSelect {
   width: 20px;
   height: 30px;
-  font-size: 16px;
+  font-size: $font_size_web;
   border: 1px solid #6a6a6a;
   border-radius: 2px;
+  cursor: pointer;
 }
 
 .buttonSelect {
-  background-color: #007bff;
+  background-color: $blue_color;
   color: white;
 }
 
@@ -30,6 +33,6 @@
   .buttonSelect {
     width: 14px;
     height: 24px;
-    font-size: 12px;
+    font-size: $font_size_mob;
   }
 }

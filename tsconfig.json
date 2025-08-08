@@ -28,11 +28,11 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "src/app/not-found.jsx",
-    "src/app/layout.jsx",
-    "src/app/page.jsx",
-    "src/store/store-wrapper.jsx",
-    "src/store/root-store.jsx",
-    "src/store/root-store-context.js"
+    "src/app/layout.tsx",
+    "src/app/page.tsx",
+    "src/store/store-wrapper.tsx",
+    "src/store/root-store.tsx",
+    "src/store/root-store-context.ts"
   ],
   "exclude": ["node_modules"]
 }

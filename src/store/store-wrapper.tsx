@@ -4,7 +4,7 @@ import { RootStore } from "./root-store";
 
 export const StoreContext = createContext(RootStore);
 
-export const StoreWrapper = ({ children }) => {
+export const StoreWrapper = ({ children }: { children: ReactNode }) => {
   return (
     <StoreContext.Provider value={RootStore}>{children}</StoreContext.Provider>
   );

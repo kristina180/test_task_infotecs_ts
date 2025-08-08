@@ -1,12 +1,14 @@
 import { makeAutoObservable, runInAction } from "mobx";
 import { USER_URL } from "../utils/constants";
 
+import { IUser, IFilters, TSortWay, TOption } from "@/utils/types";
+
 export class UsersStore {
-  users = [];
-  sortUsers = [];
-  filterUsers = [];
-  showedUsers = this.sortUsers.slice(0, 12);
-  isLoading = false;
+  users: IUser[] = [];
+  sortUsers: IUser[] = [];
+  filterUsers: IUser[] = [];
+  showedUsers: IUser[] = this.sortUsers.slice(0, 12);
+  isLoading: boolean = false;
 
   constructor() {
     makeAutoObservable(this);
@@ -15,7 +17,9 @@ export class UsersStore {
   getUsers = async () => {
     try {
       this.isLoading = true;
-      const response = await fetch(USER_URL);
+      const response = await fetch(
+        `${USER_URL}?select=id,firstName,lastName,maidenName,age,gender,email,phone,address,weight,height,image`
+      );
 
       const data = await response.json();
       runInAction(() => {
@@ -25,47 +29,53 @@ export class UsersStore {
         this.showedUsers = data.users.slice(0, 12);
         this.isLoading = false;
       });
-    } catch (error) {
+    } catch (error: any) {
       this.isLoading = false;
       console.log(error.message);
     }
   };
 
-  getSortUsers = (sortType, option) => {
+  getSortUsers = (sortType: TSortWay, option: TOption) => {
     let copy = [...this.filterUsers];
-    if (sortType == "without") {
-      this.sortUsers = this.filterUsers;
-    }
-    if (sortType == "up") {
-      copy.sort((user1, user2) => {
-        if (user1[`${option}`] < user2[`${option}`]) {
-          return -1;
-        }
-        if (user1[`${option}`] > user2[`${option}`]) {
-          return 1;
-        }
 
-        return 0;
-      });
-      this.sortUsers = copy;
-    }
-    if (sortType == "down") {
-      copy.sort((user1, user2) => {
-        if (user1[`${option}`] > user2[`${option}`]) {
-          return -1;
-        }
-        if (user1[`${option}`] < user2[`${option}`]) {
-          return 1;
-        }
+    if (option == "without") {
+      return;
+    } else {
+      if (sortType == "without") {
+        this.sortUsers = this.filterUsers;
+      }
+      if (sortType == "up") {
+        copy.sort((user1, user2) => {
+          if (user1[option] < user2[option]) {
+            return -1;
+          }
+          if (user1[option] > user2[option]) {
+            return 1;
+          }
 
-        return 0;
-      });
-      this.sortUsers = copy;
+          return 0;
+        });
+        this.sortUsers = copy;
+      }
+      if (sortType == "down") {
+        copy.sort((user1, user2) => {
+          if (user1[`${option}`] > user2[`${option}`]) {
+            return -1;
+          }
+          if (user1[`${option}`] < user2[`${option}`]) {
+            return 1;
+          }
+
+          return 0;
+        });
+        this.sortUsers = copy;
+      }
     }
+
     this.showedUsers = this.sortUsers.slice(0, 12);
   };
 
-  getFilterUsers = (filters) => {
+  getFilterUsers = (filters: IFilters) => {
     const { name, age, gender, city, phone_code } = filters;
 
     let filtered_users = this.users.filter((user) => {
@@ -121,7 +131,7 @@ export class UsersStore {
     this.showedUsers = this.sortUsers.slice(0, 12);
   };
 
-  getShowedUsers = (num) => {
+  getShowedUsers = (num: number) => {
     try {
       this.isLoading = true;
       let list = num * 12;

@@ -1,9 +1,9 @@
+@use "../../utils/constStyles" as *;
+
 .tableWrapper {
   overflow-x: auto;
   width: 100%;
-
   max-width: 1400px;
-  /* justify-self: center; */
   margin: auto;
   margin-top: 10px;
   height: 472px;
@@ -12,50 +12,52 @@
 .table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 16px;
+  font-size: $font_size_web;
   table-layout: fixed;
-}
 
-.table th,
-.table td {
-  border: 1px solid #ccc;
-  padding: 0 2px;
-  height: 36px;
-  text-align: left;
-  min-width: 50px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
+  th,
+  td {
+    border: 1px solid #aaaaaa;
+    padding: 0 2px;
+    height: 36px;
+    text-align: left;
+    min-width: 50px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 
-.table th {
-  background-color: #f5f5f5;
-  font-weight: 600;
-  position: relative;
-}
+  th {
+    background-color: #f5f5f5;
+    font-weight: 600;
+    position: relative;
 
-.table th > div {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  min-width: 0;
-  overflow: hidden;
-}
+    & > div {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      min-width: 0;
+      overflow: hidden;
+    }
+    p {
+      margin: 0;
+      min-width: 0;
+      flex-shrink: 1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
 
-.table th p {
-  margin: 0;
-  min-width: 0;
-  flex-shrink: 1;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.table th svg {
-  width: 16px;
-  height: 16px;
-  flex-shrink: 0;
+  tr {
+    &:nth-child(even) {
+      background-color: #fafafa;
+    }
+    &:hover {
+      background-color: #f0f8ff;
+    }
+  }
 }
 
 .icons {
@@ -63,14 +65,19 @@
   gap: 0px;
   flex-shrink: 0;
   overflow: hidden;
+  svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
 }
 
 .icon {
-  color: #6a6a6a;
+  color: #aaaaaa;
 }
 
 .selectedIcon {
-  color: rgb(36, 90, 252);
+  color: $blue_color;
 }
 
 .resizeHandle {
@@ -83,28 +90,18 @@
   user-select: none;
   z-index: 1;
   background: transparent;
-}
 
-.resizeHandle:hover {
-  background: rgba(0, 0, 0, 0.1);
-}
-
-.table tr:nth-child(even) {
-  background-color: #fafafa;
-}
-
-.table tr:hover {
-  background-color: #f0f8ff;
+  &:hover {
+    background: rgba(0, 0, 0, 0.1);
+  }
 }
 
 .noUsers {
   width: 100%;
   height: 30px;
-  font-size: 16px;
+  font-size: $font_size_web;
   text-align: center;
-
   padding: 4px;
-  margin-top: 0px;
   border: 1px solid #ccc;
 }
 
@@ -127,10 +124,10 @@
   background-color: white;
   border-radius: 10px;
   padding: 20px;
-}
 
-.modalWindow h3 {
-  margin-bottom: 10px;
+  h3 {
+    margin-bottom: 10px;
+  }
 }
 
 .userInfo {
@@ -143,24 +140,22 @@
 .content {
   display: flex;
   flex-direction: column;
-
   row-gap: 10px;
-}
 
-.buttonClose {
-  margin-top: auto;
+  button {
+    margin-top: auto;
+  }
 }
 
 .avatar {
-  width: 50%;
-
+  width: 300px;
   height: 300px;
-}
 
-.avatar img {
-  width: 100%;
-  height: 100%;
-  border-radius: 4px;
+  img {
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -171,21 +166,21 @@
 
   .table {
     min-width: 600px;
-    font-size: 14px;
-  }
+    font-size: $font_size_mob;
 
-  .table th,
-  .table td {
-    font-size: 12px;
-    padding: 6px 4px;
-    min-width: 80px;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+    th,
+    td {
+      font-size: $font_size_mob;
+      padding: 6px 4px;
+      min-width: 80px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
   }
 
   .icons svg {
-    width: 6px;
-    height: 6px;
+    width: 14px;
+    height: 14px;
   }
 
   .modalWindow {
@@ -208,11 +203,11 @@
 
   .content {
     width: 100%;
-    font-size: 12px;
-  }
+    font-size: $font_size_mob;
 
-  .buttonClose {
-    width: 100%;
-    font-size: 12px;
+    button {
+      width: 100%;
+      font-size: $font_size_mob;
+    }
   }
 }
