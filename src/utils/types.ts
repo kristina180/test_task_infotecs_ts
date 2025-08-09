@@ -1,3 +1,5 @@
+// for FilterUser
+
 type TGender = "male" | "female" | "not_selected";
 type TAge = "not_selected" | "0_19" | "20_29" | "30_39" | "40+";
 type TPhoneCode = `+${number}` | "not_selected";
@@ -10,6 +12,8 @@ export interface IFilters {
   phone_code: TPhoneCode;
 }
 
+// for TableContent
+
 export type TSortWay = "without" | "up" | "down";
 export type TOption = "without" | keyof IUser;
 
@@ -17,6 +21,8 @@ export interface ISort {
   sortWay: TSortWay;
   option: TOption;
 }
+
+// for store
 
 type TCoord = {
   lat: number;

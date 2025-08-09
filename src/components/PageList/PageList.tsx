@@ -26,6 +26,9 @@ const PageList = observer(() => {
   useEffect(() => {
     setPageValue(1);
   }, [filterUsers]);
+  useEffect(() => {
+    setPageValue(1);
+  }, [sortUsers]);
 
   return (
     <div className={styles.pages}>
