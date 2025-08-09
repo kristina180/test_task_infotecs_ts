@@ -94,7 +94,7 @@ const FilterUser = observer(() => {
         <option value="not_selected">Age is not selected</option>
         <option value="0_19">Less 20</option>
         <option value="20_29">From 20 to 29</option>
-        <option value="30_39">From 30 to 39</option>
+        <option value="30_39">From 30 to 40</option>
         <option value="40+">More 40</option>
       </select>
 

@@ -1,6 +1,7 @@
 @use "../../utils/constStyles" as *;
 
 .tableWrapper {
+  position: relative;
   overflow-x: auto;
   width: 100%;
   max-width: 1400px;
@@ -97,10 +98,8 @@
 }
 
 .noUsers {
-  width: 100%;
-  height: 30px;
   font-size: $font_size_web;
-  text-align: center;
+  text-align: center !important;
   padding: 4px;
   border: 1px solid #ccc;
 }
@@ -164,6 +163,7 @@
   .tableWrapper {
     overflow-x: auto;
     width: 100%;
+    height: 346px;
   }
 
   .table {
@@ -173,6 +173,7 @@
 
     th,
     td {
+      height: 24px;
       font-size: $font_size_mob;
     }
 
@@ -219,7 +220,7 @@
 
   .noUsers {
     font-size: $font_size_mob;
-    height: 24px;
+    text-align: left !important;
   }
 
   .resizeHandle {

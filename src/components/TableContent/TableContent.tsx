@@ -87,7 +87,7 @@ const TableContent = observer(() => {
   }, []);
 
   useEffect(() => {
-    if (!tableRef.current) {
+    if (!tableRef.current || tableRef.current.className === "noUsers") {
       return;
     }
 
@@ -143,21 +143,21 @@ const TableContent = observer(() => {
           <tr>
             <th>
               <div>
-                <p>Lastname</p>
+                <p>Last name</p>
                 <div className={styles.icons}>{returnIcon("lastName")}</div>
               </div>
               <span className={styles.resizeHandle}></span>
             </th>
             <th>
               <div>
-                <p>Firstname</p>
+                <p>First name</p>
                 <div className={styles.icons}>{returnIcon("firstName")}</div>
               </div>
               <span className={styles.resizeHandle}></span>
             </th>
             <th>
               <div>
-                <p>Maidenname</p>
+                <p>Maiden name</p>
                 <div className={styles.icons}>
                   {returnIcon("maidenName")}
                   <span className={styles.resizeHandle}></span>
@@ -208,7 +208,7 @@ const TableContent = observer(() => {
           </tr>
         </thead>
         <tbody>
-          {showedUsers &&
+          {showedUsers && showedUsers.length !== 0 ? (
             showedUsers.map((user) => (
               <tr key={user.id} onClick={() => handleClick(user)}>
                 <td>{user.lastName}</td>
@@ -221,14 +221,16 @@ const TableContent = observer(() => {
                 <td>{user.address?.country}</td>
                 <td>{user.address?.city}</td>
               </tr>
-            ))}
+            ))
+          ) : (
+            <tr>
+              <td className={styles.noUsers} colSpan={9}>
+                {isLoading ? "Loading..." : "No users found"}
+              </td>
+            </tr>
+          )}
         </tbody>
       </table>
-      {showedUsers.length === 0 && (
-        <div className={styles.noUsers}>
-          {isLoading ? "Loading..." : "No users found"}
-        </div>
-      )}
 
       {isOpenModal && selectedUser && (
         <div

@@ -105,8 +105,8 @@ export class UsersStore {
 
         if (age === "0_19") isAgeMatch = userAge > 0 && userAge < 20;
         else if (age === "20_29") isAgeMatch = userAge >= 20 && userAge < 30;
-        else if (age === "30_39") isAgeMatch = userAge > 30 && userAge < 40;
-        else if (age === "40+") isAgeMatch = userAge >= 40;
+        else if (age === "30_39") isAgeMatch = userAge > 30 && userAge <= 40;
+        else if (age === "40+") isAgeMatch = userAge > 40;
       }
 
       return (
