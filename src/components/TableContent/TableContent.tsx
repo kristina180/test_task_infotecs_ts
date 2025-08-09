@@ -250,14 +250,14 @@ const TableContent = observer(() => {
               </div>
               <div className={styles.content}>
                 <p>
-                  <strong>Name:</strong> {selectedUser.lastName}
+                  <strong>Name: </strong> {selectedUser.lastName}{" "}
                   {selectedUser.firstName} {selectedUser.maidenName}
                 </p>
                 <p>
                   <strong>Age:</strong> {selectedUser.age}
                 </p>
                 <p>
-                  <strong>Address:</strong>
+                  <strong>Address:</strong>{" "}
                   {[
                     selectedUser.address?.country,
                     selectedUser.address?.state,
