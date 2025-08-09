@@ -85,7 +85,7 @@
   top: 0;
   right: 0;
   bottom: 0;
-  width: 5px;
+  width: 4px;
   cursor: col-resize;
   user-select: none;
   z-index: 1;
@@ -167,13 +167,17 @@
   .table {
     min-width: 600px;
     font-size: $font_size_mob;
+    table-layout: auto;
 
     th,
     td {
       font-size: $font_size_mob;
-      min-width: 80px;
-      white-space: nowrap;
-      text-overflow: ellipsis;
+    }
+
+    th {
+      p {
+        margin-right: 4px;
+      }
     }
   }
 
@@ -213,5 +217,9 @@
   .noUsers {
     font-size: $font_size_mob;
     height: 24px;
+  }
+
+  .resizeHandle {
+    display: none;
   }
 }
