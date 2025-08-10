@@ -29,20 +29,17 @@
     text-overflow: ellipsis;
 
     > div {
-      min-width: 0;
-      display: inline-block;
+      min-width: 50px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-    }
-
-    p {
-      min-width: 0;
-      margin: 0;
-      flex-shrink: 1;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      p {
+        min-width: 50px;
+        margin: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
     }
   }
 
@@ -54,18 +51,7 @@
     & > div {
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      min-width: 0;
-      overflow: hidden;
     }
-    // p {
-    //   margin: 0;
-    //   min-width: 0;
-    //   flex-shrink: 1;
-    //   white-space: nowrap;
-    //   overflow: hidden;
-    //   text-overflow: ellipsis;
-    // }
   }
 
   tr {
