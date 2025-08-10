@@ -11,11 +11,11 @@
 }
 
 .table {
-  max-width: 1400px;
   width: 100%;
+  max-width: 1400px;
   border-collapse: collapse;
   font-size: $font_size_web;
-  table-layout: fixed;
+  table-layout: auto;
 
   th,
   td {
@@ -24,24 +24,21 @@
     height: 36px;
     text-align: left;
     min-width: 50px;
-    max-width: 300px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 
     > div {
       min-width: 0;
-      width: 100%;
-
+      display: inline-block;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      display: block;
     }
 
     p {
       min-width: 0;
-
+      margin: 0;
       flex-shrink: 1;
       white-space: nowrap;
       overflow: hidden;
@@ -56,20 +53,19 @@
 
     & > div {
       display: flex;
-      flex-direction: row;
       justify-content: space-between;
       align-items: center;
       min-width: 0;
       overflow: hidden;
     }
-    p {
-      margin: 0;
-      min-width: 0;
-      flex-shrink: 1;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
+    // p {
+    //   margin: 0;
+    //   min-width: 0;
+    //   flex-shrink: 1;
+    //   white-space: nowrap;
+    //   overflow: hidden;
+    //   text-overflow: ellipsis;
+    // }
   }
 
   tr {
