@@ -211,15 +211,33 @@ const TableContent = observer(() => {
           {showedUsers && showedUsers.length !== 0 ? (
             showedUsers.map((user) => (
               <tr key={user.id} onClick={() => handleClick(user)}>
-                <td>{user.lastName}</td>
-                <td>{user.firstName}</td>
-                <td>{user.maidenName || "-"}</td>
-                <td>{user.age}</td>
-                <td>{user.gender}</td>
-                <td>{user.phone}</td>
-                <td>{user.email}</td>
-                <td>{user.address?.country}</td>
-                <td>{user.address?.city}</td>
+                <td>
+                  <div>{user.lastName}</div>
+                </td>
+                <td>
+                  <div>{user.firstName}</div>
+                </td>
+                <td>
+                  <div>{user.maidenName || "-"}</div>
+                </td>
+                <td>
+                  <div>{user.age}</div>
+                </td>
+                <td>
+                  <div>{user.gender}</div>
+                </td>
+                <td>
+                  <div>{user.phone}</div>
+                </td>
+                <td>
+                  <div>{user.email}</div>
+                </td>
+                <td>
+                  <div>{user.address?.country}</div>
+                </td>
+                <td>
+                  <div>{user.address?.city}</div>
+                </td>
               </tr>
             ))
           ) : (
