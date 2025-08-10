@@ -30,13 +30,22 @@
     text-overflow: ellipsis;
 
     > div {
-      min-width: 50px;
-      max-width: 100%;
+      min-width: 0;
+      width: 100%;
 
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
       display: block;
+    }
+
+    p {
+      min-width: 0;
+
+      flex-shrink: 1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
 
