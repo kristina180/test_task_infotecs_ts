@@ -132,13 +132,7 @@ export class UsersStore {
   };
 
   getShowedUsers = (num: number) => {
-    try {
-      this.isLoading = true;
-      let list = num * 12;
-
-      this.showedUsers = this.sortUsers.slice(list - 12, list);
-    } catch {
-      this.isLoading = false;
-    }
+    let list = num * 12;
+    this.showedUsers = this.sortUsers.slice(list - 12, list);
   };
 }
