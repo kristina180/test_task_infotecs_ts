@@ -59,6 +59,10 @@ It allows users to:
    npm install
    # or
    yarn install
+   # or
+   pnpm install
+   # or
+   bun install   
    ```
 3. Run the development server:
   
