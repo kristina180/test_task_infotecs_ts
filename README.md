@@ -13,8 +13,11 @@ It allows users to:
 ## Preview
 
 <p align="center"> App Screenshot Main Page
+  
 <img width="1852" height="842" alt="image" src="https://github.com/user-attachments/assets/1cb8713f-16c9-479c-abc4-5a4aa854cada" /></p>
+
 <p align="center"> App Screenshot User Page
+  
 <img width="1852" height="857" alt="image" src="https://github.com/user-attachments/assets/484727ad-ecd4-458e-9202-4834720c41b5" /></p>
 
 
