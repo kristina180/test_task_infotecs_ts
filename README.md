@@ -53,23 +53,24 @@ It allows users to:
    git clone https://github.com/kristina180/test_task_infotecs_ts.git
    cd test_task_infotecs_ts```
 
-  2. Install dependencies:
-     ```bash
-     npm install
-       # or
-      yarn install
-     ```
+2. Install dependencies:
+   
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
 3. Run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+  
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   # or
+   pnpm dev
+   # or
+   bun dev
+   ```
 
 4. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
