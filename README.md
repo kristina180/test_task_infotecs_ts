@@ -1,5 +1,44 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## About
+This project is a web application for a user database, designed to display, filter, and sort user data in a dynamic and user-friendly way.
+
+It allows users to:
+* Search users by name
+* Filter by age, gender, phone code, and city
+* Sort columns (e.g., last name, age, city)
+* View contact details: phone, email, etc.
+* Navigate through paginated user data
+
+## Preview
+![App Screenshot Main Page](<img width="1852" height="842" alt="image" src="https://github.com/user-attachments/assets/1cb8713f-16c9-479c-abc4-5a4aa854cada" />)
+![App Screenshot User Page].(<img width="1852" height="857" alt="image" src="https://github.com/user-attachments/assets/484727ad-ecd4-458e-9202-4834720c41b5" />
+)
+
+## Features
+
+-  Live search and filtering by name, age, gender, phone code, and city  
+-  Sorting by columns (ascending and descending)  
+-  Pagination for user-friendly data navigation  
+-  View full user contact info (email, phone, etc.)  
+-  **Resizable columns** – adjust column width by dragging to fit your preferences  
+-  Clean and responsive UI
+
+## Tech Stack
+
+| Technology         | Purpose                                      |
+|--------------------|----------------------------------------------|
+| **Next.js**        | React framework with SSR/SSG                 |
+| **React**          | UI library                                   |
+| **TypeScript**     | Static typing and type safety                |
+| **SCSS**           | Styling with modular and nested CSS          |
+| **MobX**           | State management                             |
+| **Fetch**          | API requests                                 |
+| **dummyjson.com**  | Mock API for user data                       |
+
+
+
+
 ## Getting Started
 
 First, run the development server:
