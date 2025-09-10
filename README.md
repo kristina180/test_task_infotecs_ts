@@ -51,7 +51,7 @@ It allows users to:
 
    ```bash
    git clone https://github.com/kristina180/test_task_infotecs_ts.git
-   cd test_task_infotecs_ts```
+   cd test_task_infotecs_ts
 
 2. Install dependencies:
    
